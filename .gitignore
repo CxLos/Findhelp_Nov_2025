@@ -1,0 +1,8 @@
+020525
+020525.pub
+data/
+venv/
+.venv/
+
+cd "/c/Users/CxLos/OneDrive/Documents/BMHC/Dashboard/Impact Reports/Find Help/2025/Findhelp_Nov_2025"
+rm -rf .venv venv
