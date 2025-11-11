@@ -42,8 +42,8 @@ script_dir = os.path.dirname(os.path.abspath(__file__))
 # df = data.copy()
 
 # Get the reporting month:
-current_month = datetime(2025, 10, 1).strftime("%B")
-report_year = datetime(2025, 10, 1).year
+current_month = datetime(2025, 11, 1).strftime("%B")
+report_year = datetime(2025, 11, 1).year
 
 # Define the Google Sheets URL
 sheet_url = "https://docs.google.com/spreadsheets/d/1C5U1gFuQWmkxmm5MqZBPdzGmfIqAqi65Rp11D8l8_vA/edit?gid=1735808893#gid=1735808893"
@@ -1807,30 +1807,6 @@ html.Div(
                         dcc.Graph(
                             className='graph',
                             figure=support_pie
-                        )
-                    ]
-                ),
-            ]
-        ),
-        
-        html.Div(
-            className='graph-row',
-            children=[
-                html.Div(
-                    className='graph-box',
-                    children=[
-                        dcc.Graph(
-                            className='graph',
-                            figure=status_bar
-                        )
-                    ]
-                ),
-                html.Div(
-                    className='graph-box',
-                    children=[
-                        dcc.Graph(
-                            className='graph',
-                            figure=housing_pie
                         )
                     ]
                 ),
