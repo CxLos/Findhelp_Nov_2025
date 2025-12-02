@@ -75,16 +75,11 @@ worksheet = sheet.worksheet(f"{current_month}")
 data = pd.DataFrame(worksheet.get_all_records())
 df = data.copy()
 
-# Filtered df where 'Date of Activity:' is in May
-# df["Date of Activity"] = pd.to_datetime(df["Date of Activity"], errors='coerce')
-# df["Date of Activity"] = df["Date of Activity"].dt.tz_localize('UTC')  # or local timezone first, then convert to UTC
-# df = df[df['Date of Activity'].dt.month == 7]
-
 # Strip whitespace from string entries in the whole DataFrame
 for col in df.select_dtypes(include='object').columns:
     df[col] = df[col].map(lambda x: x.strip() if isinstance(x, str) else x)
 
-# df = df.applymap(lambda x: x.strip() if isinstance(x, str) else x)
+df = df.sort_values(by='created_at', ascending=True)
 
 # Define a discrete color sequence
 # color_sequence = px.colors.qualitative.Plotly
