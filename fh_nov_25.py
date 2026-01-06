@@ -146,15 +146,15 @@ df.rename(
 )
 
 # Search for all duplicates in dataset:
-# duplicates = df[df.duplicated(keep=False)]
+duplicates = df[df.duplicated(keep=False)]
 # print("Duplicate entries in dataset:\n", duplicates)
 
-# # Find duplicate rows in seeker_name:
-# duplicate_rows = df[df.duplicated(subset=['seeker_name'], keep=False)]
-# # print("Duplicate seeker_name entries:\n", duplicate_rows)
+# Find duplicate rows in seeker_name:
+duplicate_rows = df[df.duplicated(subset=['seeker_name'], keep=False)][['screener_id', 'created_at', 'seeker_name']].sort_values('seeker_name')
+print("Duplicate seeker_name entries:\n", duplicate_rows)
 
-# # Show duplicate names with their counts
-# duplicate_counts = df[df.duplicated(subset=['seeker_name'], keep=False)]['seeker_name'].value_counts()
+# Show duplicate names with their counts
+duplicate_counts = df[df.duplicated(subset=['seeker_name'], keep=False)]['seeker_name'].value_counts()
 # print("Duplicate seeker_name counts:\n", duplicate_counts)
 
 # ------------------------------- Clients Serviced ---------------------------- #
@@ -1944,8 +1944,8 @@ html.Div(
             ),
             dash_table.DataTable(
                 id='applications-table',
-                data=data,
-                columns=columns,
+                data=data, # type: ignore
+                columns=columns, # type: ignore
                 page_size=10,
                 sort_action='native',
                 filter_action='native',
@@ -1970,7 +1970,7 @@ html.Div(
                     'whiteSpace': 'normal',
                     'height': 'auto',
                 },
-                style_cell_conditional=[
+                style_cell_conditional=[ # type: ignore
                     # make the index column narrow and centered
                     {'if': {'column_id': '#'},
                     'width': '20px', 'minWidth': '60px', 'maxWidth': '60px', 'textAlign': 'center'},
